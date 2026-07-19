@@ -6,28 +6,30 @@ import AddTodo from "./AddTodo";
 function ToDoList({token, onLogout}){
     const [todos, setTodos] = useState([]);
 
+    useEffect(() => {
     async function caricaTodos() {
         const data = await getTodos(token);
         setTodos(data || []);
     }
-
-    useEffect(()=>{
-        caricaTodos();
-    }, [caricaTodos])
+    caricaTodos();
+}, [token]);
 
     async function handleUpdate(id, completed){
         await updateTodo(id, completed, token);
-        caricaTodos();
+        const data = await getTodos(token);
+        setTodos(data || []);
     }
 
     async function handleDelete(id) {
         await deleteTodo(id, token);
-        caricaTodos();
+        const data = await getTodos(token);
+        setTodos(data || []);
     }
 
     async function handleAdd(task) {
         await createTodo(task, token);
-        caricaTodos();
+        const data = await getTodos(token);
+        setTodos(data || []);
     }
     
     return (
