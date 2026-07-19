@@ -3,6 +3,11 @@ const router = express.Router();
 const Todo = require('../models/todo');
 const authMiddleware = require('../middleware/authMiddleware');
 
+//le funzioni router.get/put/post/delete servono per fare le richieste http e prendono tre parametri
+//path : percorso
+//middleware: è una funzione che viene eseguita prima della callback
+//callback: è la funzione che gestisce le richieste e manda la risposta
+
 // GET
 
 /**
@@ -20,6 +25,7 @@ const authMiddleware = require('../middleware/authMiddleware');
  */
 router.get('/' ,authMiddleware, async (req,res)=> {
     try {
+        //trova l'user usando la funzione find di mongoose e restituisce la sua todo list
         const todos = await Todo.find({ userId: req.user.id }); // equivale a select * from todos
         res.json(todos); //restituisce il model todo
     } catch (err) {
@@ -53,7 +59,8 @@ router.get('/' ,authMiddleware, async (req,res)=> {
  */
 router.post('/',authMiddleware, async (req,res)=>{
     try{
-        const todo = await Todo.create({ task: req.body.task, userId: req.user.id }); //crea un documento nel database con il valore task mandato dal client
+        //crea un documento nel database con il valore task mandato dal client
+        const todo = await Todo.create({ task: req.body.task, userId: req.user.id }); 
         res.status(201).json(todo);
     } catch (err) {
         res.status(500).json({error : err.message });
@@ -83,10 +90,11 @@ router.post('/',authMiddleware, async (req,res)=>{
  */
 router.put('/:id',authMiddleware, async (req, res)=> {
     try{
+        //trova il todo usando l'id e lo aggiorna
         const todo = await Todo.findByIdAndUpdate(
             req.params.id,  //id del documento da trovare
             {completed: req.body.completed},    // campi da aggiornare
-            {new: true}
+            {new: true}                         //dice al database di restituire il documento dopo la modifica non prima
         );
         res.json(todo); //manda al client il documento aggiornato
     } catch (err) {

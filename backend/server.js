@@ -1,23 +1,26 @@
 /**
  Questo è il file principale del backend
- */
+*/
+
+// import
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+
+//rende disponibili le variabili d'ambiente che si trovano nel file env
 require('dotenv').config();
 
+//crea l'applicazione express e definisce la porta su cui il server ascolta
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 //Middleware globali
-app.use(cors());
-app.use(express.json());
+app.use(cors());            //serve per impedire al browser di bloccare le richieste del frontend
+app.use(express.json());    //permette al backend di leggere le richieste in formato json
 
-//swagger
-
-//configurazione
+//configurazione swagger
 const swaggerOptions = {
     definition: {
         openapi : '3.0.0',

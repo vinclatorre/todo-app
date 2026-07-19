@@ -1,3 +1,9 @@
+/**
+ authMiddleware è una funzione che viene eseguita prima della callback all'interno delle route
+ Controlla che l'user abbia il token prima di farlo accedere
+*/
+
+//import di jwt
 const jwt = require('jsonwebtoken');
 
 function authMiddleware(req, res, next){
@@ -9,7 +15,7 @@ function authMiddleware(req, res, next){
     }
 
     try {
-        //controlla che il token sia valido usando la chiave segreta
+        //controlla che il token sia valido usando la chiave segreta che si trova nel file env
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         //salva l'id dell'utente

@@ -1,3 +1,7 @@
+/**
+ Schema che definisce l'user con i suoi attributi username email e password
+*/ 
+
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
