@@ -1,8 +1,8 @@
 // URL da usare nelle chiamate fetch
 // fetch serve a fare chiamate http, restituisce una promise, è l'equivalente di thunder client nel codice
 
-const API_URL = 'http://localhost:3000/todos';
-const AUTH_URL = 'http://localhost:3000/auth';
+const API_URL = 'https://todo-app-h7zx.onrender.com/todos';
+const AUTH_URL = 'https://todo-app-h7zx.onrender.com/auth';
 
 export async function getTodos(token){
     const response = await fetch(API_URL, {

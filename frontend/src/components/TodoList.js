@@ -13,7 +13,7 @@ function ToDoList({token, onLogout}){
 
     useEffect(()=>{
         caricaTodos();
-    }, [])
+    }, [caricaTodos])
 
     async function handleUpdate(id, completed){
         await updateTodo(id, completed, token);

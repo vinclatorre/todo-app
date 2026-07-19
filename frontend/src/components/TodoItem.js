@@ -1,5 +1,3 @@
-import { deleteTodo, updateTodo } from "../services/api";
-
 function ToDoItem({todo, onUpdate, onDelete}){
     return (
         <div className="container mt-3">
