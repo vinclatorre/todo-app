@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Todo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Una applicazione web per la gestione di una lista di cose da fare, con autenticazione degli utenti.
 
-## Available Scripts
+## 🔗 Link
 
-In the project directory, you can run:
+- **Frontend**: https://todo-app-a1234.vercel.app
+- **Backend API**: https://todo-app-h7zx.onrender.com
+- **Documentazione API**: https://todo-app-h7zx.onrender.com/api-docs
 
-### `npm start`
+## 🛠️ Tecnologie utilizzate
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Frontend**
+- React
+- Bootstrap
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Backend**
+- Node.js
+- Express
+- MongoDB Atlas
+- Mongoose
+- JWT (jsonwebtoken)
+- bcrypt
+- Swagger
 
-### `npm test`
+## 📁 Struttura del progetto
+todo-app/
+├── backend/
+│   ├── server.js
+│   ├── models/
+│   │   ├── todo.js
+│   │   └── user.js
+│   ├── routes/
+│   │   ├── todos.js
+│   │   └── auth.js
+│   └── middleware/
+│       └── authMiddleware.js
+└── frontend/
+└── src/
+├── App.js
+├── components/
+│   ├── TodoList.js
+│   ├── TodoItem.js
+│   ├── AddTodo.js
+│   ├── Login.js
+│   └── Register.js
+└── services/
+└── api.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Come avviare il progetto in locale
 
-### `npm run build`
+### Backend
+```bash
+cd backend
+npm install
+node server.js
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Crea un file `.env` nella cartella `backend`:
+MONGODB_URI=connectionString
+JWT_SECRET=secretString
+PORT=3000
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend
+```bash
+cd frontend
+npm install
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📡 API Endpoints
 
-### `npm run eject`
+### Autenticazione
+| Metodo | Route | Descrizione |
+|--------|-------|-------------|
+| POST | /auth/register | Registra un nuovo utente |
+| POST | /auth/login | Effettua il login |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Todo
+| Metodo | Route | Descrizione |
+|--------|-------|-------------|
+| GET | /todos | Restituisce tutti i todo dell'utente |
+| POST | /todos | Crea un nuovo todo |
+| PUT | /todos/:id | Aggiorna un todo |
+| DELETE | /todos/:id | Elimina un todo |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> Le route dei todo richiedono autenticazione tramite token JWT nell'header `Authorization: Bearer <token>`
