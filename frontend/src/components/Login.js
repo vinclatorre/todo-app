@@ -2,19 +2,23 @@ import { useState } from "react";
 import { login } from "../services/api";
 
 function Login({onLogin}){
+    //stato che contiene email e password
     const [form, setForm] = useState({
             email: '',
             password: ''
         })
 
+    //aggiorna lo stato del form con email e password inseriti dall'utente, viene chiamata quando si modifica l'input
     function handleChange(e){
         setForm({...form, [e.target.name]: e.target.value});
     }
 
+    //chiama la funzione login presente nell'api e salva la risposta in result, viene chiamata quando si clicca sil button
+    //i dati vengono salvati anche nel database
     async function handleLogin(){
         const result = await login(form.email, form.password);
-        if (result.token) {
-            onLogin(result.token);
+        if (result.token) {             //se il token è valido lo passa a onLogin che viene data in  
+            onLogin(result.token);      //App.js che lo salva nello stato con setToken
         }
     }
 

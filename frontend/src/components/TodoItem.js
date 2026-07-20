@@ -1,3 +1,9 @@
+// componente che mostra il singolo todo, è formato da una checkbox con label e un pulsate delete
+// prende tre props che vengono passate da TodoList
+//todo è il todo salvato nel database
+//onUpdate serve per aggiornare la checkbox
+//onDelete elimina il todo
+
 function ToDoItem({todo, onUpdate, onDelete}){
     return (
         <div className="container mt-3">
@@ -11,6 +17,7 @@ function ToDoItem({todo, onUpdate, onDelete}){
                 <label 
                 className="form-check-label me-auto"
                 htmlFor={todo._id}>{todo.task}</label>
+
                 <button 
                 className="btn btn-danger btn-sm"
                 onClick={()=> onDelete(todo._id)}>Delete</button>

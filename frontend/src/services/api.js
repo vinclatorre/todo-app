@@ -1,13 +1,13 @@
-// URL da usare nelle chiamate fetch
+// questo file contiene le funzioin per far comunicare il frontend con il backend tramite fetch
 // fetch serve a fare chiamate http, restituisce una promise, è l'equivalente di thunder client nel codice
 
-const API_URL = 'https://todo-app-h7zx.onrender.com/todos';
+const API_URL = 'https://todo-app-h7zx.onrender.com/todos';     // URL da usare nelle chiamate fetch
 const AUTH_URL = 'https://todo-app-h7zx.onrender.com/auth';
 
 export async function getTodos(token){
     const response = await fetch(API_URL, {
         headers: {'Authorization' : `Bearer ${token}`}
-    });  //di default fa una chiamata GET
+    });                                     //di default fa una chiamata GET quindi non serve spicificarlo in method
     return response.json();                 // converte la risposta in json
 }
 

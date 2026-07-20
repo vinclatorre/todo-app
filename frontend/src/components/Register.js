@@ -2,20 +2,21 @@ import { useState } from "react";
 import { register } from "../services/api";
 
 function Register (){
+    //stato che contiene username email e password
     const [form, setForm] = useState({
         username: '',
         email: '',
         password: ''
     })
 
-    // handleChange serve per gestire gli eventi
+    // aggiorna lo stato del form, uguale al login
     function handleChange(e){
         setForm({...form, [e.target.name]: e.target.value});
     }
 
+    //chiama la funzione register dell'api, viene chiamata quando si clicca sul button
     async function handleRegister(){
-        const result = await register(form.username, form.email, form.password);
-        console.log(result);
+        await register(form.username, form.email, form.password);
     }
 
     return(

@@ -6,30 +6,32 @@ import AddTodo from "./AddTodo";
 function ToDoList({token, onLogout}){
     const [todos, setTodos] = useState([]);
 
+    //esegue il codice dopo che il componente viene renderizzato
     useEffect(() => {
-    async function caricaTodos() {
-        const data = await getTodos(token);
-        setTodos(data || []);
+    async function caricaTodos() {                  //carica i todo appena l'utente fa il login
+        const data = await getTodos(token);         //fa una get per ottenere la lista
+        setTodos(data || []);                       //aggiorna lo stato
     }
     caricaTodos();
 }, [token]);
 
+    // queste funzioni vengono passate come props a todoItem
     async function handleUpdate(id, completed){
-        await updateTodo(id, completed, token);
-        const data = await getTodos(token);
-        setTodos(data || []);
+        await updateTodo(id, completed, token);     //chiama updateTodo per aggiornare il todo nel database
+        const data = await getTodos(token);         //fa una get per ottenere la lista aggiornata
+        setTodos(data || []);                       //aggiorna lo stato
     }
 
     async function handleDelete(id) {
-        await deleteTodo(id, token);
-        const data = await getTodos(token);
-        setTodos(data || []);
+        await deleteTodo(id, token);                // chiama deleteTodo per eliminare il todo dal database
+        const data = await getTodos(token);         //fa una get per ottenere la lista aggiornata
+        setTodos(data || []);                       //aggiorna lo stato
     }
 
     async function handleAdd(task) {
-        await createTodo(task, token);
-        const data = await getTodos(token);
-        setTodos(data || []);
+        await createTodo(task, token);              // chiama createTodo dell'api per aggiungere il todo al database
+        const data = await getTodos(token);         //fa una get per ottenere la lista aggiornata
+        setTodos(data || []);                       //aggiorna lo stato
     }
     
     return (

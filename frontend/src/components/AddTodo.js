@@ -1,12 +1,14 @@
-import { useState } from "react";
+// questo è il componente per inserire i todo è formato da un input e un button
+//prende la funzione onAdd che viene passata come props da TodoList
 
+import { useState } from "react";
 
 function AddTodo({onAdd}){
     const [task, setTask] = useState('')
 
-    // crea la task e svuota l'input precedente
+    // crea la task e svuota l'input precedente, viene chiamata quando si clicca sul button
     function handleAdd(){
-    onAdd(task);
+    onAdd(task);    //chiama handleAdd che sta nel todoList
     setTask('');
     }
 
@@ -28,12 +30,7 @@ function AddTodo({onAdd}){
                     </div>
                 </div>
             </div>
-        </div>
-        
-        
-
-    
-        
+        </div>     
 )
 }
 
