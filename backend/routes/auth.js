@@ -1,3 +1,7 @@
+/**
+ questo file contiene le routes per login e register
+*/
+
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
