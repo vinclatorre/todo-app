@@ -22,6 +22,10 @@ Backend (Render)
 ↓ Mongoose
 Database (MongoDB Atlas)
 
+## Diagramma UML dei Casi d'Uso
+
+![Diagramma UML](uml.png)
+
 ---
 
 ## 3. Modello dei Dati
