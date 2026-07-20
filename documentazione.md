@@ -202,3 +202,5 @@ Componente per aggiungere un nuovo todo — contiene un input e un bottone. Pass
 - Frontend: https://todo-app-a1234.vercel.app
 - Backend : https://todo-app-h7zx.onrender.com
 - Documentazione Swagger: https://todo-app-h7zx.onrender.com/api-docs
+
+**Se non funziona subito aspettare qualche minuto**
