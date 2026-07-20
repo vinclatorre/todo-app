@@ -34,6 +34,7 @@ function ToDoList({token, onLogout}){
         setTodos(data || []);                       //aggiorna lo stato
     }
     
+    //restituisce titolo e l'elenco contenente dei todo prensenti nello stato
     return (
         <div className="container mt-5">
 
